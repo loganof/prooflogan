@@ -1,0 +1,87 @@
+//Á´±í£¬P56
+
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+
+int main()
+{
+
+	system("pause");
+	return 0;
+}
+
+struct ListNode
+{
+	int data;
+	ListNode *pNext;
+};
+
+void AddNode(ListNode **pHead, int value)
+{
+	ListNode *pNew = new ListNode();
+	pNew->data = value;
+	pNew->pNext = nullptr;
+	if (nullptr == *pHead)
+	{
+		*pHead = pNew;
+	}
+	else
+	{
+		ListNode *pNode = *pHead;
+		while (nullptr != pNode->pNext)
+		{
+			pNode = pNode->pNext;
+		}
+		pNode->pNext = pNew;
+	}
+}
+
+void RemoveNode(ListNode **pHead, int value)
+{
+	if (nullptr == pHead || nullptr == *pHead)
+	{
+		return;
+	}
+	ListNode *pDeleteNode = nullptr;
+	if (value == (*pHead)->data)
+	{
+		pDeleteNode = *pHead;
+		*pHead = (*pHead)->pNext;
+	}
+	else
+	{
+		ListNode *pNode = *pHead;
+		while (nullptr != pNode->pNext && value != pNode->pNext->data)
+		{
+			pNode = pNode->pNext;
+		}
+		if (nullptr != pNode->pNext && value == pNode->pNext->data)
+		{
+			pDeleteNode = pNode->pNext;
+			pNode->pNext = pNode->pNext->pNext;
+		}
+	}
+	if (nullptr != pDeleteNode)
+	{
+		delete pDeleteNode;
+		pDeleteNode = nullptr;
+	}
+}
+
+void PrintListNode(ListNode *pHead)
+{
+	std::stack<ListNode*>nodes;
+	ListNode *pNode = pHead;
+	while(nullptr != pNode)
+	{
+		nodes.push(pNode);
+		pNode = pNode->pNext;
+	}
+	while(!nodes.empty())
+	{
+		pNode = nodes.top();
+		printf("%d\t", pNode->data);
+		nodes.pop();
+	}
+}

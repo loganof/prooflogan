@@ -1,0 +1,23 @@
+-- VERSION_5
+-- START DISKCACHE_2
+G:\Project\eclipsePro\pythonPro\.metadata\.plugins\org.eclipse.core.resources\.projects\ImgProcess\com.python.pydev.analysis\v2_indexcache
+firstFile.firstFile|1548902948854936000|G:\Project\eclipsePro\pythonPro\ImgProcess\src\firstFile\firstFile.py
+-- END DISKCACHE
+-- START DICTIONARY
+2
+2=firstFile.firstFile
+1=G:\Project\eclipsePro\pythonPro\ImgProcess\src\firstFile\firstFile.py
+-- END DICTIONARY
+-- START TREE 1
+7
+add|1|addGaussianNoise!1^19#5*18@
+den|1|Denoising_img!1^45#5*19@
+equ|1|equalizeHist_Image!1^42#5*19@
+gau|1|gauss_noiseImage!1^36#5*19@
+gra|1|grayImage!1^33#5*19@
+sal|2|SaltAndPepper!1^7#5*18@SaltAndPepper_noiseImage!1^39#5*19@
+src|1|srcImage!1^29#5*19@
+-- END TREE
+-- START TREE 2
+0
+-- END TREE

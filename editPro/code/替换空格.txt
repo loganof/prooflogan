@@ -1,0 +1,55 @@
+//二维数组中的查找,p47
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int a[][3] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+	int rows = sizeof(a) / sizeof(a[0]);
+	int columns = sizeof(a[0]) / sizeof(a[0] + 1);
+	cout << a << endl;
+	cout << **(&a + 1)<< endl ;
+	cout << *(*(a + 1) + 1) << endl;
+	system("pause");
+	return 0;
+}
+
+void ReplaceBlank(char *str, int len)
+{
+	if (nullptr == str || len < = 0)
+	{
+		return;
+	}
+	int originLength = 0;
+	int numerOfBlank = 0;
+	int i = 0;
+	while ('\0' != str[i])
+	{		
+		originLength ++;
+		if (' '== str[i])
+		{
+			numerOfBlank++;
+		}
+		i++;
+	}
+	int newLength = originLength + numerOfBlank * 2;
+	if (newLength > len)
+	{
+		return;
+	}
+	int indexOfOrigin = originLength;
+	int indexOfNew = newLength;
+	while(indexOfOrigin >= 0 && indexOfNew > indexOfOrigin)
+	{
+		if (' ' == indexOfOrigin )
+		{
+			str[indexOfNew--] = '0';
+			str[indexOfNew--] = '2';
+			str[indexOfNew--] = '%';
+		}
+		else
+			str[indexOfNew--] = str[indexOfOrigin];
+		indexOfOrigin--;
+	}
+}

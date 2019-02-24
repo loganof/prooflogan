@@ -1,0 +1,77 @@
+import requests
+from lxml import etree
+import os
+ 
+ 
+source_url = 'http://www.mmjpg.com'
+ 
+s = requests.Session()
+s.headers['Accept'] = 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+s.headers['Cache-Control']='max-age=0'
+s.headers['Connection']='keep-alive'
+s.headers['Accept-Encoding']='gzip, deflate, sdch'
+s.headers['Upgrade-Insecure-Requests']='1'
+# s.headers['Host']='www.mmjpg.com'
+s.headers['Referer']='http://www.mmjpg.com/'
+s.headers['Accept-Language']='zh-CN,zh;q=0.8'
+s.headers['User-Agent'] = 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+ 
+def downpage(droute, ele_con_url, No=1):
+    print(No)
+    con = requests.get(ele_con_url)
+    page_con = con.content.decode('utf-8')
+    page_con = etree.HTML(page_con)
+    down_url = page_con.xpath('//div[@class="content"]/a/img/@src')[0]
+    print(down_url)
+ 
+    with open(droute+str(No)+'.jpg', 'wb') as f:
+        con = s.get(down_url)
+        # print(con)
+        f.write(con.content)
+    try:
+        bldown = page_con.xpath('//div[@class="page"]/a[text()="下一张"]/@href')[0]
+    except:
+        print("pictures of this lady have been downloaded ")
+    else:
+        if bldown:
+            ele_con_url = source_url + bldown
+            No = No + 1
+            downpage(droute, ele_con_url, No)
+ 
+ 
+con_url = source_url
+page = 0
+while True:
+    page = page +1
+    print(con_url)
+    con = s.get(con_url)
+    print()
+    page_content = etree.HTML(con.content.decode('utf-8'))
+    item_data = page_content.xpath('//div[@class="pic"]/ul/li')
+    item_len = len(item_data)
+    print(item_len)
+ 
+    print("page :%d" % page)
+ 
+    for eve_item in item_data:
+        ele_con_url = eve_item.xpath('a/@href')[0]
+        ele_name = eve_item.xpath('a/img/@alt')[0]
+        print(ele_con_url)
+        if os.path.exists(ele_name):
+            print(ele_name)
+            continue
+        else:
+            os.mkdir(ele_name)
+            downpage(ele_name + '/', ele_con_url)
+        print(ele_con_url,ele_name)
+ 
+ 
+    try:
+        blnextpage = page_content.xpath('//div[@class="page"]/a[text()="下一页"]/@href')[0]
+    except:
+        print("pictures of all ladies have been downloaded ")
+        break
+    else:
+        con_url = source_url + blnextpage
+
+

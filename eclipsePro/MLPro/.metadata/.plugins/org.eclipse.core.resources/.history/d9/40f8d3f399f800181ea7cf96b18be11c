@@ -1,0 +1,5 @@
+#coding=utf-8
+
+from support import print_func1
+
+support.print_func1("logan")

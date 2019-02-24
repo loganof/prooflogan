@@ -1,0 +1,24 @@
+package fisrtPro;
+import java.awt.*; 
+
+public class FrameTest {
+	
+	public static int f(int x)
+	{
+		if(x == 0)
+		{
+			return 0;
+		}
+		else
+			return 2 * f(x - 1) + x * x;
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		int result = f(2);
+		System.out.println(result);
+		
+	}
+
+}

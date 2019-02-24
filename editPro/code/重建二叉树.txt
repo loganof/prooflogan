@@ -1,0 +1,66 @@
+//Á´±í£¬P56
+
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+
+int main()
+{
+
+	system("pause");
+	return 0;
+}
+
+struct BinaryTreeNode
+{
+	int data;
+	BinaryTreeNode *pLeft;
+	BinaryTreeNode *pRight;
+};
+
+BinaryTreeNode *Construct(int *preorder, int* inorder, int length)
+{
+	if (nullptr != preorder || nullptr != inorder || length <= 0)
+	{
+		return nullptr;
+	}
+	return ConstructCore(preorder, preorder + length - 1, inorder, inorder + length - 1);
+}
+
+BinaryTreeNode *ConstructCore(int *startPreorder, int *endPreorder,
+	                          int *startInorder, int *endInorder)
+{
+	int rootValue = startInorder[0];
+	BinaryTreeNode *root = new BinaryTreeNode();
+	root->data = rootValue;
+	root->pLeft = root->pRight = nullptr;
+
+	if (startPreorder == endPreorder)
+	{
+		if (startInorder == endInorder && *startPreorder == *startInorder)
+		{
+			return root;
+		}
+		else
+			throw std::exception("Invalid input!");
+	}
+	int *rootInorder = startInorder;
+	while(rootInorder <= endInorder && *rootInorder != rootValue)
+		++ rootInorder;
+	if(rootInorder == endInorder && *rootInorder !=rootValue)
+		throw std::exception("Invalid input!");
+
+	int leftLength = rootInorder - startInorder;
+	int *leftPreOrder = startPreorder + leftLength;
+	if (leftLength > 0)
+	{
+		root->pLeft = ConstructCore(startPreorder + 1,
+			                        leftPreOrder, startInorder,rootInorder - 1);
+	}
+	if (leftLength < endPreorder - startPreorder)
+	{
+		root->pRight = ConstructCore(leftPreOrder + 1, endPreorder,
+			                         rootInorder + 1, endInorder);
+	}
+	return root;
+}

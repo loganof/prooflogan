@@ -1,0 +1,13 @@
+package firstPro;
+
+import java.awt.*;
+
+public class firstPro {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Frame f = new Frame("张雪是个小姑娘");
+		f.setBounds(30, 30, 250, 200);
+		f.setVisible(true);
+	}
+}

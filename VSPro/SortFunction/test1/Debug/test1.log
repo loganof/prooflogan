@@ -1,0 +1,30 @@
+﻿生成启动时间为 2019/1/10 星期四 10:22:46。
+     1>项目“G:\Project\VSPro\SortFunction\test1\test1.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“Debug\test1.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         D:\VS2010\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp sort.cpp
+         sort.cpp
+         main.cpp
+         正在生成代码...
+     1>g:\project\vspro\sortfunction\test1\sort.cpp(203): warning C4717: “mergeSort”: 如递归所有控件路径，函数将导致运行时堆栈溢出
+       ManifestResourceCompile:
+         所有输出均为最新。
+       Link:
+         D:\VS2010\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"G:\Project\VSPro\SortFunction\Debug\test1.exe" /INCREMENTAL /NOLOGO opencv_calib3d244d.lib opencv_contrib244d.lib opencv_core244d.lib opencv_features2d244d.lib opencv_flann244d.lib opencv_gpu244d.lib opencv_highgui244d.lib opencv_imgproc244d.lib opencv_legacy244d.lib opencv_ml244d.lib opencv_objdetect244d.lib opencv_ts244d.lib opencv_video244d.lib opencv_calib3d244.lib opencv_contrib244.lib opencv_core244.lib opencv_features2d244.lib opencv_flann244.lib opencv_gpu244.lib opencv_highgui244.lib opencv_imgproc244.lib opencv_legacy244.lib opencv_ml244.lib opencv_objdetect244.lib opencv_ts244.lib opencv_video244.lib dxerr.lib dxguid.lib d3dx9d.lib d3dx10d.lib d3d9.lib winmm.lib comctl32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\test1.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"G:\Project\VSPro\SortFunction\Debug\test1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:\Project\VSPro\SortFunction\Debug\test1.lib" /MACHINE:X86 Debug\test1.exe.embed.manifest.res
+         Debug\main.obj
+         Debug\sort.obj
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\test1.exe.embed.manifest" /manifest Debug\test1.exe.intermediate.manifest
+         所有输出均为最新。
+       LinkEmbedManifest:
+         所有输出均为最新。
+         test1.vcxproj -> G:\Project\VSPro\SortFunction\Debug\test1.exe
+       FinalizeBuildStatus:
+         正在删除文件“Debug\test1.unsuccessfulbuild”。
+         正在对“Debug\test1.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“G:\Project\VSPro\SortFunction\test1\test1.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:04.53

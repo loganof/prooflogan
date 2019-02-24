@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Server>
+	<Port name="HTTP/1.1" protocol="HTTP">8945</Port>
+<PathMapping local="/secPro" module="secPro" remote="G:\Project\eclipsePro\phpPro\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\htdocs\secPro"/></Server>

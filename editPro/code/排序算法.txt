@@ -1,0 +1,152 @@
+/*∆ﬂ¥Û≈≈–ÚÀ„∑®*/
+
+void Swap(int &a, int &b)
+{
+	int temp;
+	temp = a;
+	a = b;
+	b = temp;
+}
+
+void BubbleSort(int *arr, int length)
+{
+	int i, j;
+	for (i = 0; i < length - 1; i++)
+	{
+		for (j = 0; j < length - 1; j++)
+		{
+			if (arr[j] > arr[j + 1])
+			{
+				Swap(arr[j], arr[j + 1]);
+			}
+		}
+	}
+}
+
+void SelectSort(int *arr, int length)
+{
+	int i, j, min;
+	for (i = 0; i < length - 1; i++)
+	{
+		min = i;
+		for (j = i + 1; j < length; j++)
+		{
+			if (arr[j] < arr[min])
+			{
+				min = j;
+			}
+		}
+		Swap(arr[min],arr[i]);
+	}
+}
+
+void InsertSort(int *arr, int length)
+{
+	int i, j, temp;
+	for (i = 1; i < length; i++)
+	{
+		if (arr[i] < arr[i - 1])
+		{
+			temp = arr[i];
+			for (j = i - 1; j >= 0 && arr[j] > temp; j--)
+			{
+				arr[j + 1] = arr[j];
+			}
+			arr[j + 1] = temp;
+		}
+		
+	}
+}
+
+void QuickSort(int *arr, int left, int right)
+{
+	if (left > right)
+	{
+		return;
+	}
+
+	int i, j, flag;
+	i = left;
+	j = right;
+	flag = arr[left];
+	while(i < j)
+	{
+		while(i < j && arr[j] >= flag)
+			j --;
+		if (i < j)
+		{
+			arr[i++] = arr[j];
+		}
+		while (i < j && arr[i] <= flag)
+		{
+			i ++;
+		}
+		if (i < j)
+		{
+			arr[j--] = arr[i]; 
+		}
+	}
+	arr[i] = flag;
+	QuickSort(arr, left, i - 1);
+	QuickSort(arr, i + 1, right);
+}
+
+void HeapConstruct(int *arr, int root, int length)
+{
+	int i, temp;
+	temp = arr[root];
+
+	for (i = root * 2 + 1; i < length; i++)
+	{
+		if (i < length - 1 && arr[i] < arr[i + 1])
+		{
+			i++;
+		}
+		if (arr[i] < arr[root])
+		{
+			break;
+		}
+		arr[root] = arr[i];
+		root = i;
+	}
+	arr[root] = temp;
+}
+
+void HeapSort(int *arr, int length)
+{
+	int i;
+	/*ππ‘Ï¥Û∂•∂—*/
+	for (i = length - 1; i >= 0; i--)
+	{
+		HeapConstruct(arr, i, length);
+	}
+
+	/*≈≈–Ú*/
+	for (i = length - 1; i > 0; i--)
+	{
+		Swap(arr[i], arr[0]);
+		HeapConstruct(arr, 0, i);
+	}
+}
+
+void  ShellSort(int *arr, int length)
+{
+	int i, j, temp, step;
+	step = length; 
+	do 
+	{
+		step = step / 3 + 1;
+		for (i = step; i < length; i++)
+		{
+			if (arr[i] < arr[i - step])
+			{
+				temp = arr[i];
+				for (j = i - step; j >= 0 && arr[j] > temp;j -= step)
+				{
+					arr[j + step] = arr[j];
+				}
+				arr[j + step] = temp;
+			}
+		}
+	} while (step > 1);
+}

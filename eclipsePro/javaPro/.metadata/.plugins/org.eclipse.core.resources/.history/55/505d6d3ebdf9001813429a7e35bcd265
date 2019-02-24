@@ -1,0 +1,17 @@
+package ListErr;
+
+import java.util.*;
+
+public class ListErr {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		List strList = new ArrayList();
+		strList.add("·è¿ñJava½²Òå");
+		strList.add("·è¿ñAndroid½²Òå");
+		
+		strList.add(5);
+		strList.forEach(str -> System.out.println(((String)str).length()));
+	}
+
+}
