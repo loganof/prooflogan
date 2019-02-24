@@ -1,0 +1,45 @@
+//strlen与sizeof的区别
+#include <iostream>
+using namespace std;
+
+int GetSize(int *arr/*int arr[]*/);
+int GetStrlen(char *str);
+
+int main()
+{
+	int arr[] = {1, 6, 8, 4, 8, 5};
+	int size1 = sizeof(arr);
+
+	int *ptr = arr;
+	int size2 = sizeof(ptr);
+
+	int size3 = GetSize(arr);
+
+	char str[] = "peng zhong chao";
+	int size4 = strlen(str);
+
+	char *ptr2 = str;
+	int size5 = strlen(str);
+
+	int size6 = GetStrlen(str);
+	
+	cout << "size1 = " << size1 << endl;
+	cout << "size2 = " << size2 << endl;
+	cout << "size3 = " << size3 << endl;
+	cout << "size4 = " << size4 << endl;
+	cout << "size5 = " << size5 << endl;
+	cout << "size6 = " << size6 << endl;
+
+	system("pause");
+	return 0;
+}
+
+int GetSize(int *arr/*int arr[]*/)
+{
+	return sizeof(arr);
+}
+
+int GetStrlen(char *str)
+{
+	return strlen(str);
+}

@@ -1,0 +1,63 @@
+//找出数组中重复的数字,p42
+
+#include <iostream>
+using namespace std;
+
+int duplicate(const int *numbers, int length);
+int countRange(const int *numbers, int length, int start, int end);
+
+int main()
+{
+	int arr[] = {2, 3, 1, 0, 2, 5, 3};
+	int length = sizeof(arr) / sizeof(arr[0]);
+
+	cout << "重复数字为:"<< duplicate(arr, length) << endl; 
+
+	system("pause");
+	return 0;
+}
+
+int duplicate(const int *numbers, int length)
+{
+	if(nullptr == numbers || length <= 0)//本来以为不会犯错误，结果还是写成赋值，所以养成这种书写习惯
+	{
+		return false;
+	}
+	int start = 1;
+	int end = length - 1;
+
+	while(end >= start)
+	{
+		int middle = ((end - start) >> 1) + start;//除于2用右移的方法
+		int count = countRange(numbers, length, start, middle);
+		if (end == start)
+		{
+			if(count > 1)
+				return start;
+			else
+				break;
+		}
+		if (count >(middle - start + 1))
+		{
+			end = middle;
+		}
+		else
+			start = middle + 1;
+	}
+	return -1;
+}
+
+int countRange(const int *numbers, int length, int start, int end)
+{
+	if (nullptr == numbers)
+	{
+		return 0;
+	}
+	int count = 0;
+	for(int i = 0; i < length; i++)
+		if (numbers[i] >= start && numbers[i] <= end)//括号成员一，单目二，除余三，加减四，移位五，关系六，
+		{                                            //等于不等于排第七，位与异或与位或，三分天下八九十，逻辑或跟与
+			count++;                                 //十二和十一，条件高于赋值逗号运算最低
+		}
+		return count;
+}

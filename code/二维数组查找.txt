@@ -1,0 +1,53 @@
+//二维数组中的查找,p47
+
+#include <iostream>
+using namespace std;
+
+bool Find(int *Matrix, int rows, int columns, int number);
+
+int main()
+{
+	int arr[][4] = {1, 2, 8, 9, 2, 4, 9, 12, 4, 7, 10, 13, 6, 8, 11, 15};
+	int rows = sizeof(arr) / sizeof(arr[0]);
+	int colums = sizeof(arr[0]) / sizeof(arr[0][0]);
+	int findnumber = 0;
+
+	cout << "请输入待查找的数 n = " << endl;
+	cin >> findnumber;
+
+	bool bFound = Find(arr[0], rows, colums, findnumber);//将二维数组的首地址传入函数中
+	if (true == bFound)
+	{
+		cout << "数组中包含待查找的数" << endl;
+	}
+	else
+		cout << "数组中不包含待查找的数" << endl;
+
+	system("pause");
+	return 0;
+}
+
+bool Find(int *Matrix, int rows, int columns, int number)
+{
+	bool bFound = false;
+	if (nullptr != Matrix && columns >= 0)
+	{
+		int row = 0;
+		int column = columns - 1;
+		while(row < rows && column >= 0)
+		{
+			if (Matrix[row * columns + column] == number)
+			{
+				bFound = true;
+				break;
+			}
+			else if (Matrix[row * columns + column] > number)
+			{
+				--column;
+			}
+			else 
+				++ row;
+		}
+	}
+	return bFound;
+}

@@ -1,0 +1,113 @@
+//找出数组中重复的数字,p40
+
+#include <iostream>
+using namespace std;
+
+bool duplicate(int numbers[], int length, int * duplication);
+
+int main()
+{
+	int arr[] = {2, 3, 1, 0, 2, 5, 3};
+	int length = sizeof(arr) / sizeof(arr[0]);
+	int *dup = new int;
+
+	bool bDup = duplicate(arr, length, dup);
+	
+	if (bDup == true)
+		cout << "重复数字为:"<< *dup << endl; 
+	else
+		cout << "不存在重复的数字！" << endl;
+
+	system("pause");
+	return 0;
+}
+
+bool duplicate(int numbers[], int length, int *duplication)
+{
+	bool bDup = false;
+
+	if(numbers == nullptr || length <= 0)
+	{
+		return false;
+	}
+
+	for(int i = 0; i < length; i++)
+	{
+		if (numbers[i] < 0 || numbers[i] > length - 1)
+		{
+			return false;
+		}
+	}
+	for(int i = 0; i < length; i++)
+	{
+		while(numbers[i] != i)
+		{
+			if (numbers[i] == numbers[numbers[i]])
+			{
+				*duplication = numbers[i];//暂时没有想出输出所有重复数字的办法
+				bDup = true;
+				break;
+			}
+			int temp = numbers[i];
+			numbers[i] = numbers[numbers[i]];
+			numbers[temp] = temp;
+		}
+	}
+	return bDup;
+}//找出数组中重复的数字,p40
+
+#include <iostream>
+using namespace std;
+
+bool duplicate(int numbers[], int length, int * duplication);
+
+int main()
+{
+	int arr[] = {2, 3, 1, 0, 2, 5, 3};
+	int length = sizeof(arr) / sizeof(arr[0]);
+	int *dup = new int;
+
+	bool bDup = duplicate(arr, length, dup);
+	
+	if (bDup == true)
+		cout << "重复数字为:"<< *dup << endl; 
+	else
+		cout << "不存在重复的数字！" << endl;
+
+	system("pause");
+	return 0;
+}
+
+bool duplicate(int numbers[], int length, int *duplication)
+{
+	bool bDup = false;
+
+	if(numbers == nullptr || length <= 0)
+	{
+		return false;
+	}
+
+	for(int i = 0; i < length; i++)
+	{
+		if (numbers[i] < 0 || numbers[i] > length - 1)
+		{
+			return false;
+		}
+	}
+	for(int i = 0; i < length; i++)
+	{
+		while(numbers[i] != i)
+		{
+			if (numbers[i] == numbers[numbers[i]])
+			{
+				*duplication = numbers[i];//暂时没有想出输出所有重复数字的办法
+				bDup = true;
+				break;
+			}
+			int temp = numbers[i];
+			numbers[i] = numbers[numbers[i]];
+			numbers[temp] = temp;
+		}
+	}
+	return bDup;
+}

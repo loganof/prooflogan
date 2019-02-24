@@ -1,0 +1,65 @@
+//位运算，P99
+
+#include <iostream>
+using namespace std;
+
+int NumberOf1(int n);
+int NumberOf2(int n);
+bool Is2Square(int n);
+int MoveBits(int m, int n);
+
+int main()
+{
+	int n = 0, n2 = 0;
+	cout << "请输入一个整数：" << endl;
+	cin >> n;
+	cout << "用方法1该数的二进制中存在的1的个数为：" <<  NumberOf1(n)<< endl;
+	cout << "用方法2该数的二进制中存在的1的个数为：" <<  NumberOf2(n)<< endl;
+	if (Is2Square(n))
+	{
+		cout << "该数是2 的整数次方！" << endl;
+	}
+	else
+		cout << "该数不是2 的整数次方！" << endl;
+	cout << "请再输入1个数：" << endl;
+	cin >> n2;
+	cout << "两个数需要" << MoveBits(n, n2) <<"次改变二进数的位数，可等到相同的数！";
+
+	system("pause");
+	return 0;
+}
+
+int NumberOf1(int n)
+{
+	int count = 0;
+	int flag = 1;
+	while (0 != flag)
+	{
+		if (n & flag)
+			count++;
+		flag = flag << 1;
+	}
+	return count;
+}
+
+int NumberOf2(int n)
+{
+	int count = 0;
+	while(n)
+	{
+		n = n & (n - 1);
+		count ++;
+	}
+	return count;
+}
+
+bool Is2Square(int n)
+{
+	return 0 ==(n & n - 1);
+}
+
+int MoveBits(int m, int n)
+{
+	m = m^n;
+	return NumberOf2(m);
+}
